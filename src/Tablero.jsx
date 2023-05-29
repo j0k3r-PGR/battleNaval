@@ -5,8 +5,8 @@ const AUX = {
     B : "  "
 }
 
-let aciertos = Array(81).fill(false)
-
+let aciertosMios = Array(81).fill(false)
+let barcosRestantesPC = 10
 const Box = ({children,className,updateBox,index, seleccion,juego,acierto}) =>{
     const [color,setColor] = useState("")
 
@@ -48,26 +48,35 @@ export function Tablero(
             setMisBarcos(barc)
         }
         let win = false
-        if (barcos===0) {
+        if (barcos===0 || barcosRestantesPC == 0) {
             setNoWin(false)
             win = true
         }
         if (juego & !win){
             setBarcos(barcosPc.some(element => element == index)? barcos-1 : barcos)
-            aciertos[index] = true
+            aciertosMios[index] = true
             const newMapBox = [... mapBox]
             newMapBox[index] = AUX.A
             setMapBox(newMapBox)
+            const tablePC = document.getElementsByClassName("box pc")
+            let num = 0
+            while(true){
+                num = Math.floor(Math.random()*tablePC.length)
+                if (tablePC[num].classList.value === "box pc") break
+            }
+            const encontro = misBarcos.some(element => element == num)
+            tablePC[num].classList.value = encontro ? "box pc red":"box pc blue"
+            if (encontro) {
+                barcosRestantesPC = parseInt(document.getElementById("cantPc").innerText,"a") - 1
+                document.getElementById("cantPc").innerText = barcosRestantesPC
+            }
         }
-        
-        //const tablePC = document.getElementsByClassName("box pc")
-        //tablePC[Math.floor(Math.random() * tablePC.length)].className = "box blue"
     }
 
     return(
     <div className="tabla">
         <h1>{tittle}</h1>
-        <div className='container' id={id}>
+        <div className='container'>
             {
             mapBox.map((_, index) => {
                 return(
@@ -79,8 +88,7 @@ export function Tablero(
                 seleccion = {seleccion}
                 juego= {juego}
                 barcosPc = {barcosPc}
-                id = {id}
-                acierto = {aciertos[index]}
+                acierto = {aciertosMios[index]}
                 >
                     {barcosPc ? (barcosPc.some(element => index === element)? AUX.A : AUX.B) : mapBox[index]}
                 </Box>
@@ -90,7 +98,7 @@ export function Tablero(
         </div>
         <div className='info'>
             <div className='restantes'>
-            <label>BARCOS RESTANTES: {barcos}  </label>
+            <label>BARCOS RESTANTES: <span id={id}>{barcos}</span>  </label>
             </div>
         </div>
     </div>

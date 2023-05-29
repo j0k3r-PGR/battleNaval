@@ -45,8 +45,8 @@ function App() {
       <button onClick={iniciar}>Iniciar</button>
     </div>
     <div className={className2}>
-      <Tablero tittle="PC Table" valido={true} clas="player" juego barcosPc={barcosPc}/>
-      <Tablero tittle="My Table" valido={false} clas="pc" barcosPc={misBarcos}/>
+      <Tablero tittle="PC Table" valido={true} clas="player" juego barcosPc={barcosPc} misBarcos={misBarcos}/>
+      <Tablero tittle="My Table" valido={false} clas="pc" id="cantPc" />
     </div>
     </>
   )
