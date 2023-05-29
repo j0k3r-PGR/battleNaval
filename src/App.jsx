@@ -9,6 +9,8 @@ function App() {
   const [className2,setClassName2] = useState("tableros none")
   const [misBarcos, setMisBarcos] = useState([])
   const [barcosPc, setBarcosPc] = useState([])
+  const [classganador, setClassGanador] = useState("none")
+  const [ganador,setGanador] = useState("")
 
   const iniciar = () =>{
     if(ready) {
@@ -36,17 +38,38 @@ function App() {
     setBarcosPc(newBarcosPc)
   }
 
+  const actualyGanador = (prop) =>{
+    setClassGanador("ganador")
+    setClassName("none")
+    setGanador(prop)
+  }
+
+  const reinicio = () =>{
+    setReady(false)
+    setClassName("inicioUser")
+    setClassName2("tableros none")
+    setMisBarcos([])
+    setBarcosPc([])
+    setClassGanador("none")
+    setGanador("")
+  }
+  
   return (
     <>
     <h1>BATTLE GAME</h1>
     <div className={className}>
       <h1>Seleccione sus barcos</h1>
-      <Tablero select={true} valido={true} actualyReady={actualyReady} seleccion misBarcos={misBarcos} setMisBarcos={actualyMisBarcos} />
+      <Tablero select={true} valido={true} actualyReady={actualyReady} seleccion setBarcosPc={setBarcosPc} misBarcos={misBarcos} setMisBarcos={actualyMisBarcos} />
       <button onClick={iniciar}>Iniciar</button>
     </div>
     <div className={className2}>
-      <Tablero tittle="PC Table" valido={true} clas="player" juego barcosPc={barcosPc} misBarcos={misBarcos}/>
+      <Tablero tittle="PC Table" valido={true} clas="player" setGanador={actualyGanador} juego barcosPc={barcosPc} misBarcos={misBarcos}/>
       <Tablero tittle="My Table" valido={false} clas="pc" id="cantPc" />
+    </div>
+    <div className={classganador}>
+      <h1>Hubo un ganador</h1>
+      <h1>{ganador}</h1>
+      <button onClick={reinicio}>Reiniciar Juego</button>
     </div>
     </>
   )

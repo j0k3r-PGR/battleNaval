@@ -56,7 +56,7 @@
   margin-top: 5px;
 }
 
-.inicioUser button{
+button{
   -webkit-border-radius: 58;
   -moz-border-radius: 58;
   border-radius: 58px;
@@ -85,8 +85,21 @@
   display: none;
   
 }
+
+
+.ganador{
+  position: absolute;
+  display: grid;
+  top: 10px;
+  width: 696px;
+  background-color: #222;
+}
+
 @media (max-width : 780px){
   .inicioUser{
+    width: 350px;
+  }
+  .ganador{
     width: 350px;
   }
 }
