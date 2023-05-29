@@ -29,6 +29,12 @@
   gap: 30px;
 }
 
+@media (max-width : 780px) {
+  .tableros{
+    flex-direction: column;
+  }
+}
+
 .blue{
   color: lightblue;
   background-color: lightblue;
