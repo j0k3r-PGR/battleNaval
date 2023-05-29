@@ -50,13 +50,10 @@ export function Tablero(
         if (juego) {
             let win = false
             if (barcos === 0 || barcosRestantesPC == 0) {
-                if (barcos === 0) {
-                    setGanador("Has Ganado El Juego")
-                } else {
-                    setGanador("Lo siento PERDISTE :') ")
-                }
-                setNoWin(false)
-                win = true
+                setMapBox(Array(81).fill(null))
+                setBarcos(10)
+                win = !noWin
+                setNoWin(win)
             }
             if (!win) {
                 setBarcos(barcosPc.some(element => element == index) ? barcos - 1 : barcos)
@@ -80,7 +77,7 @@ export function Tablero(
                     if(barcosRestantesPC == 0 & barcos == 0){
                         setGanador("Han Empatado")
                     }else if(barcosRestantesPC == 0){
-                        setGanador("Lo SIENTO PERO PERDISTE :')")
+                        setGanador("Lo SIENTO PERO PERDISTE")
                     }
                 }else{
                     setGanador("Has Ganado El Juego")
