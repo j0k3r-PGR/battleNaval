@@ -1,0 +1,40 @@
+.box{
+  width: 35px;
+  height: 35px;
+  border: 1px solid black;
+}
+
+.container{
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+}
+
+
+#root h1{
+  text-align: center;
+}
+
+.info{
+  margin: 10px;
+  padding: 0;
+}
+
+.info .restantes{
+  font-size: 24px;
+  text-align: center;
+}
+
+.tableros{
+  display: flex;
+  gap: 30px;
+}
+
+.blue{
+  color: lightblue;
+  background-color: lightblue;
+}
+
+.red{
+  color : red;
+  background-color: red;
+}
