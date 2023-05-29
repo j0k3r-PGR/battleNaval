@@ -85,3 +85,8 @@
 .none{
   display: none;
 }
+@media (max-width : 780px){
+  .inicioUser{
+    width: 350px;
+  }
+}
