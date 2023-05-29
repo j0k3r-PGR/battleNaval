@@ -6,11 +6,17 @@ import { Tablero } from './Tablero.jsx'
 function App() {
   const [ready, setReady] = useState(false)
   const [className,setClassName] = useState("inicioUser")
+  const [className2,setClassName2] = useState("tableros none")
   const [misBarcos, setMisBarcos] = useState([])
   const [barcosPc, setBarcosPc] = useState([])
 
   const iniciar = () =>{
-    if(ready) {setClassName("none")}else{alert("debe Cargar Los Barcos")}
+    if(ready) {
+      setClassName("none")
+      setClassName2("tableros")
+    }else{
+      alert("debe Cargar Los Barcos")
+    }
   }
 
   const actualyReady = () => {
@@ -32,13 +38,13 @@ function App() {
 
   return (
     <>
+    <h1>BATTLE GAME</h1>
     <div className={className}>
       <h1>Seleccione sus barcos</h1>
       <Tablero select={true} valido={true} actualyReady={actualyReady} seleccion misBarcos={misBarcos} setMisBarcos={actualyMisBarcos} />
       <button onClick={iniciar}>Iniciar</button>
     </div>
-    <h1>BATTLE GAME</h1>
-    <div className='tableros'>
+    <div className={className2}>
       <Tablero tittle="PC Table" valido={true} clas="player" juego barcosPc={barcosPc}/>
       <Tablero tittle="My Table" valido={false} clas="pc" barcosPc={misBarcos}/>
     </div>

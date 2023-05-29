@@ -46,7 +46,6 @@
 
 .inicioUser{
   width: 696px;
-  position: fixed;
   display: flex;
   flex-direction: column;
   background-color: #222;
@@ -84,6 +83,7 @@
 
 .none{
   display: none;
+  
 }
 @media (max-width : 780px){
   .inicioUser{
